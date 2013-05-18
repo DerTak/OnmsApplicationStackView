@@ -1,6 +1,7 @@
 package org.opennms.applicationstackview;
 
 import com.vaadin.event.LayoutEvents;
+import com.vaadin.server.Sizeable;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
@@ -21,6 +22,11 @@ public class HealthIndicator extends HorizontalLayout {
         if (good > 0) addComponent(goodLabel);
         if (problems > 0) addComponent(problemsLabel);
         if (death > 0) addComponent(deathLabel);
+        
+        for (int i=0; i<getComponentCount(); i++) {
+            setExpandRatio(getComponent(i), getComponent(i).getWidth());
+            getComponent(i).setWidth(100, Unit.PERCENTAGE);
+        }
         
         addLayoutClickListener(new LayoutEvents.LayoutClickListener() {
 
