@@ -12,7 +12,9 @@ import com.vaadin.ui.Layout;
 public class HealthIndicator extends CustomComponent {
     
     public HealthIndicator(int good, int problems, int death) {
+        setWidth(100, Unit.PERCENTAGE);
         Layout healthLayout = new HorizontalLayout();
+        healthLayout.setWidth(100, Unit.PERCENTAGE);
         
         Button goodButton = new Button("good");
         goodButton.setWidth(good, Unit.PERCENTAGE);

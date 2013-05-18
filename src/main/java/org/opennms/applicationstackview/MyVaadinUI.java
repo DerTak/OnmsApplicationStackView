@@ -10,7 +10,6 @@ import com.vaadin.ui.VerticalLayout;
  * The Application's "main" class
  */
 @SuppressWarnings("serial")
-@Theme(value = "mytheme")
 public class MyVaadinUI extends UI {
 
     @Override
@@ -25,7 +24,7 @@ public class MyVaadinUI extends UI {
         ApplicationLayer topFull = new ApplicationLayer("topFull", 100, 0, 0);
         ApplicationLayer middleA = new ApplicationLayer("middleA", 50, 25, 25);
         ApplicationLayer middleB = new ApplicationLayer("middleB", 0, 0, 100);
-        ApplicationLayer bottumFull = new ApplicationLayer("bottumFull", 80, 20, 0);
+        ApplicationLayer bottumFull = new ApplicationLayer("bottomFull", 80, 20, 0);
         
         
         stack.addLayer(topFull, 0, 0, 3, 0);
