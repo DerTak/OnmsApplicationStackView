@@ -12,12 +12,12 @@
         <init-param>
             <description>Vaadin UI to display</description>
             <param-name>UI</param-name>
-            <param-value>org.opennms.applicationstackview.MyVaadinUI</param-value>
+            <param-value>org.opennms.applicationstack.view.ApplicationStackUI</param-value>
         </init-param>
                 <init-param>
             <description>Application widgetset</description>
             <param-name>widgetset</param-name>
-            <param-value>org.opennms.applicationstackview.AppWidgetSet</param-value>
+            <param-value>org.opennms.applicationstack.view.AppWidgetSet</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
