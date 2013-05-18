@@ -2,6 +2,7 @@ package org.opennms.applicationstackview;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -29,6 +30,14 @@ public class MyVaadinUI extends UI {
         stack.addLayer(auto, 1, 0);
         stack.addLayer(bahn, 1, 1);
 
+        Label heavenL = new Label("heavenL"); 
+        Label autoL = new Label("AutoL"); 
+        Label bahnL = new Label("BahnL"); 
+        
+        stack.addLabel(heavenL);
+        stack.addLabel(autoL);
+        stack.addLabel(bahnL);
+        
         layout.addComponent(stack);
 
     }

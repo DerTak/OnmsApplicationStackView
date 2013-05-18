@@ -2,6 +2,7 @@ package org.opennms.applicationstackview;
 
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.Label;
 
 /**
  *
@@ -9,7 +10,7 @@ import com.vaadin.ui.GridLayout;
  */
 public class ApplicationStack extends CustomComponent {
 
-    private final GridLayout gridLayout = new GridLayout(4, 4);
+    private final GridLayout gridLayout = new GridLayout(1, 1);
     
     public ApplicationStack(final String caption) {
         setWidth(400, Unit.PIXELS);
@@ -18,12 +19,19 @@ public class ApplicationStack extends CustomComponent {
         setCompositionRoot(gridLayout);
         gridLayout.setMargin(true);
         gridLayout.addStyleName("applicationStackGrid");
+        gridLayout.setWidth(300, Unit.PIXELS);
+        gridLayout.setHeight(500, Unit.PIXELS);
     }
     
     public ApplicationStack addLayer(ApplicationLayer newLayer, int row, int column) {
-        gridLayout.addComponent(newLayer, column, row);
+        gridLayout.addComponent(newLayer);
         return this;
 //        return addLayer(newLayer, row , column, 1, 1);
+    }
+ 
+    public ApplicationStack addLabel(Label newLabel) {
+        gridLayout.addComponent(newLabel);
+        return this;
     }
     
 //    public ApplicationStack addLayer(ApplicationLayer newLayer, int row, int column, int rowSpan, int colSpan) {
