@@ -1,37 +1,45 @@
 package org.opennms.applicationstackview;
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
+import com.vaadin.event.LayoutEvents;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Layout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 
 /**
  *
  * @author tak
  */
-public class HealthIndicator extends CustomComponent {
+public class HealthIndicator extends HorizontalLayout {
     
     public HealthIndicator(int good, int problems, int death) {
         setWidth(100, Unit.PERCENTAGE);
-        Layout healthLayout = new HorizontalLayout();
-        healthLayout.setWidth(100, Unit.PERCENTAGE);
+                        
+        final Label goodLabel = createLabel("good", good);
+        final Label problemsLabel = createLabel("problems", problems);
+        final Label deathLabel = createLabel("death", death);
         
-        Button goodButton = new Button("good");
-        goodButton.setWidth(good, Unit.PERCENTAGE);
-        goodButton.setStyleName("good");
-        healthLayout.addComponent(goodButton);
+        if (good > 0) addComponent(goodLabel);
+        if (problems > 0) addComponent(problemsLabel);
+        if (death > 0) addComponent(deathLabel);
         
-        Button problemsButton = new Button("problems");
-        problemsButton.setWidth(problems, Unit.PERCENTAGE);
-        problemsButton.setStyleName("problems");
-        healthLayout.addComponent(problemsButton);
-        
-        Button deathButton = new Button("death");
-        deathButton.setWidth(death, Unit.PERCENTAGE);
-        deathButton.setStyleName("death");
-        healthLayout.addComponent(deathButton);
-        
-        setCompositionRoot(healthLayout);
+        addLayoutClickListener(new LayoutEvents.LayoutClickListener() {
+
+            @Override
+            public void layoutClick(LayoutEvents.LayoutClickEvent event) {
+                if (event.getClickedComponent() == goodLabel) Notification.show("good pressed");
+                if (event.getClickedComponent() == problemsLabel) Notification.show("problems pressed");
+                if (event.getClickedComponent() == deathLabel) Notification.show("death pressed");
+            }
+        });
+    }
+    
+    private Label createLabel(String description, int width) {
+        Label label = new Label(" ");
+        label.setStyleName(description);
+        label.setDescription(description);
+        label.setWidth(width, Unit.PERCENTAGE);
+        label.setHeight(15, Unit.PIXELS);
+        return label;
     }
     
 }

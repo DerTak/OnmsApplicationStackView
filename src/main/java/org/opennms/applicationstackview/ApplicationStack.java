@@ -12,14 +12,12 @@ public class ApplicationStack extends CustomComponent {
     private final GridLayout gridLayout = new GridLayout(4, 3);
     
     public ApplicationStack(final String caption) {
-        setWidth(400, Unit.PIXELS);
+        setWidth(420, Unit.PIXELS);
         setStyleName("applicationStack");
         setCaption(caption);
         setCompositionRoot(gridLayout);
-        gridLayout.setMargin(true);
-        gridLayout.addStyleName("applicationStackGrid");
-        gridLayout.setWidth(400, Unit.PIXELS);
-//        gridLayout.setHeight(500, Unit.PIXELS);  // TODO dynamically
+        gridLayout.addStyleName("applicationStack");
+        gridLayout.setWidth(420, Unit.PIXELS);
     }
     
     public ApplicationStack addLayer(ApplicationLayer newLayer, int column1, int row1, int column2, int row2) {
@@ -27,7 +25,7 @@ public class ApplicationStack extends CustomComponent {
         int colSpan = column2 - column1 + 1;
         int rowSpan = row2 - row1 + 1;
         newLayer.setWidth(100 * colSpan, Unit.PIXELS);
-        newLayer.setHeight(rowSpan * 50, Unit.PIXELS);
+        newLayer.setHeight(rowSpan * 100, Unit.PIXELS);
         return this;
 //        return addLayer(newLayer, row , column, 1, 1);
     }
