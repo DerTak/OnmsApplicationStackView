@@ -10,7 +10,7 @@ import com.vaadin.ui.Label;
  */
 public class ApplicationStack extends CustomComponent {
 
-    private final GridLayout gridLayout = new GridLayout(1, 1);
+    private final GridLayout gridLayout = new GridLayout(4, 4);
     
     public ApplicationStack(final String caption) {
         setWidth(400, Unit.PIXELS);
@@ -23,15 +23,10 @@ public class ApplicationStack extends CustomComponent {
         gridLayout.setHeight(500, Unit.PIXELS);
     }
     
-    public ApplicationStack addLayer(ApplicationLayer newLayer, int row, int column) {
-        gridLayout.addComponent(newLayer);
+    public ApplicationStack addLayer(ApplicationLayer newLayer, int column1, int row1, int column2, int row2) {
+        gridLayout.addComponent(newLayer, column1, row1, column2, row2);
         return this;
 //        return addLayer(newLayer, row , column, 1, 1);
-    }
- 
-    public ApplicationStack addLabel(Label newLabel) {
-        gridLayout.addComponent(newLabel);
-        return this;
     }
     
 //    public ApplicationStack addLayer(ApplicationLayer newLayer, int row, int column, int rowSpan, int colSpan) {

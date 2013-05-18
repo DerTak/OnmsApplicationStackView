@@ -22,22 +22,17 @@ public class MyVaadinUI extends UI {
 
         ApplicationStack stack = new ApplicationStack("Waschmaschine");
 
-        ApplicationLayer heaven = new ApplicationLayer("heaven");
-        ApplicationLayer auto = new ApplicationLayer("auto");
-        ApplicationLayer bahn = new ApplicationLayer("bahn");
+        ApplicationLayer topFull = new ApplicationLayer("topFull");
+        ApplicationLayer middleA = new ApplicationLayer("middleA");
+        ApplicationLayer middleB = new ApplicationLayer("middleB");
+        ApplicationLayer bottumFull = new ApplicationLayer("bottumFull");
         
-        stack.addLayer(heaven, 0, 0);
-        stack.addLayer(auto, 1, 0);
-        stack.addLayer(bahn, 1, 1);
+        
+        stack.addLayer(topFull, 0, 0, 3, 0);
+        stack.addLayer(middleA, 0, 1, 1, 1);
+        stack.addLayer(middleB, 2, 1, 3, 1);
+        stack.addLayer(bottumFull, 0, 2, 3, 2);
 
-        Label heavenL = new Label("heavenL"); 
-        Label autoL = new Label("AutoL"); 
-        Label bahnL = new Label("BahnL"); 
-        
-        stack.addLabel(heavenL);
-        stack.addLabel(autoL);
-        stack.addLabel(bahnL);
-        
         layout.addComponent(stack);
 
     }
