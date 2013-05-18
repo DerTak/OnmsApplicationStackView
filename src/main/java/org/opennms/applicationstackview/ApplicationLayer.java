@@ -10,12 +10,12 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class ApplicationLayer extends CustomComponent {
     
-    public ApplicationLayer(final String name) {
+    public ApplicationLayer(final String name, int good, int problem, int death) {
         VerticalLayout appLayerVerticalLayout = new VerticalLayout();
         Panel appLayerMainPanel = new Panel(name);
-        Panel appLayerHealthInidcatorPanel = new Panel("health");
+        HealthIndicator healthIndicator = new HealthIndicator(good, problem, death);
         appLayerVerticalLayout.addComponent(appLayerMainPanel);
-        appLayerVerticalLayout.addComponent(appLayerHealthInidcatorPanel);
+        appLayerVerticalLayout.addComponent(healthIndicator);
         setCompositionRoot(appLayerVerticalLayout);
     }
     

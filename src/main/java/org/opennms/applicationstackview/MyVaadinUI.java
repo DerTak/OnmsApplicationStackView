@@ -22,10 +22,10 @@ public class MyVaadinUI extends UI {
 
         ApplicationStack stack = new ApplicationStack("Waschmaschine");
 
-        ApplicationLayer topFull = new ApplicationLayer("topFull");
-        ApplicationLayer middleA = new ApplicationLayer("middleA");
-        ApplicationLayer middleB = new ApplicationLayer("middleB");
-        ApplicationLayer bottumFull = new ApplicationLayer("bottumFull");
+        ApplicationLayer topFull = new ApplicationLayer("topFull", 100, 0, 0);
+        ApplicationLayer middleA = new ApplicationLayer("middleA", 50, 25, 25);
+        ApplicationLayer middleB = new ApplicationLayer("middleB", 0, 0, 100);
+        ApplicationLayer bottumFull = new ApplicationLayer("bottumFull", 80, 20, 0);
         
         
         stack.addLayer(topFull, 0, 0, 3, 0);
