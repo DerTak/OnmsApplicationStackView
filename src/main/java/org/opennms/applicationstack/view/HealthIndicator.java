@@ -40,19 +40,21 @@ public class HealthIndicator extends HorizontalLayout {
         }
         
         if (good > 0) {
+            goodLabel.setDescription(good + "%");
             addComponent(goodLabel);
             goodLabel.setWidth(good, Unit.PERCENTAGE);
         }
         if (problems > 0) {
+            problemsLabel.setDescription(problems + "%");
             addComponent(problemsLabel);
             problemsLabel.setWidth(problems, Unit.PERCENTAGE);
         }
         if (death > 0) {
+            deathLabel.setDescription(death + "%");
             addComponent(deathLabel);
             deathLabel.setWidth(death, Unit.PERCENTAGE);
         }
         
-                
         for (int i=0; i<getComponentCount(); i++) {
             setExpandRatio(getComponent(i), getComponent(i).getWidth());
             getComponent(i).setWidth(100, Unit.PERCENTAGE);
@@ -62,7 +64,6 @@ public class HealthIndicator extends HorizontalLayout {
     private static Label createLabel(String description) {
         Label label = new Label(" ");
         label.setStyleName(description);
-        label.setDescription(description);
         label.setWidth(100, Unit.PERCENTAGE);
         label.setHeight(15, Unit.PIXELS);
         return label;

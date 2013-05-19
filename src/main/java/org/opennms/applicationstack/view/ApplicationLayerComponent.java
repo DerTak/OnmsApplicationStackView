@@ -42,8 +42,6 @@ public class ApplicationLayerComponent extends CustomComponent {
         setWidth(stack.computeColumnWidth() * layer.getWidth(), Unit.PIXELS);
         setHeight(stack.computeRowHeight() * layer.getHeight(), Unit.PIXELS);
         healthIndicator.render(layer);
-
-        // TODO Margin/Padding, usw...
         return this;
     }
 }

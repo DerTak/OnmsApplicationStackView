@@ -12,8 +12,6 @@ import org.opennms.applicationstack.model.Coordinates;
  */
 public class ApplicationStackComponent extends CustomComponent {
 
-    private static final int PADDING_OFFSET = 20;
-    
     private final GridLayout gridLayout = new GridLayout();
     
     public ApplicationStackComponent() {
@@ -21,7 +19,6 @@ public class ApplicationStackComponent extends CustomComponent {
     
     public ApplicationStackComponent render(ApplicationStack stack) {
         setCaption(stack.getLabel());
-//      setWidth(stack.computeWidth() + PADDING_OFFSET, Unit.PIXELS);
         setStyleName("applicationStack");
         setCompositionRoot(gridLayout);
         
@@ -29,9 +26,6 @@ public class ApplicationStackComponent extends CustomComponent {
         gridLayout.removeAllComponents();
         gridLayout.setRows(stack.getRowCount());
         gridLayout.setColumns(stack.getColumnCount());
-//        gridLayout.setWidth(stack.computeWidth() + PADDING_OFFSET, Unit.PIXELS);
-//        gridLayout.setSpacing(false);
-//        gridLayout.setMargin(false);
         
         for (ApplicationLayer eachLayer : stack.getLayers()) {
             final Coordinates c = eachLayer.getCoordinates();

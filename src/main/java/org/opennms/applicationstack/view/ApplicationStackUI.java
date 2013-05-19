@@ -4,6 +4,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import java.util.Random;
 import org.opennms.applicationstack.model.ApplicationLayer;
 import org.opennms.applicationstack.model.ApplicationStack;
 import org.opennms.applicationstack.model.NodeDummy;
@@ -45,16 +46,22 @@ public class ApplicationStackUI extends UI {
                 .addLayer(new ApplicationLayer("Layer10a", 8, 0, 3, 1))
                 .addLayer(new ApplicationLayer("Layer10b", 8, 3, 3, 1))
                 .addLayer(new ApplicationLayer("Layer11", 9, 0, 6, 1));
-        registerDummyNodes(stack);
         
-        final ApplicationStackComponent stackComponent = new ApplicationStackComponent().render(stack);
-        layout.addComponent(stackComponent);
+        registerDummyNodes(stack);
+        layout.addComponent(new ApplicationStackComponent().render(stack));
     }
     
     private static void registerDummyNodes(ApplicationStack stack) {
         for (ApplicationLayer eachLayer : stack.getLayers()) {
+            int max = 100;
+            Random random = new Random();
             for (int i=0; i<5; i++) {
-                stack.registerNode(eachLayer.getLabel(), new NodeDummy("node" + (i+1), 100, 10, 15));
+                int good = random.nextInt(max) + 1;
+                max -= good -1;
+                int problems = random.nextInt(max) + 1;
+                max -= problems -1;
+                int death = random.nextInt(max) + 1;
+                stack.registerNode(eachLayer.getLabel(), new NodeDummy("node" + (i+1), good, death, problems));
             }
         }
     }
