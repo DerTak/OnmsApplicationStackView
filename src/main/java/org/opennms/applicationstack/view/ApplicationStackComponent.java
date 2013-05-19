@@ -21,7 +21,7 @@ public class ApplicationStackComponent extends CustomComponent {
     
     public ApplicationStackComponent render(ApplicationStack stack) {
         setCaption(stack.getLabel());
-        setWidth(stack.computeWidth(), Unit.PIXELS);
+//      setWidth(stack.computeWidth() + PADDING_OFFSET, Unit.PIXELS);
         setStyleName("applicationStack");
         setCompositionRoot(gridLayout);
         
@@ -29,7 +29,9 @@ public class ApplicationStackComponent extends CustomComponent {
         gridLayout.removeAllComponents();
         gridLayout.setRows(stack.getRowCount());
         gridLayout.setColumns(stack.getColumnCount());
-        gridLayout.setWidth(stack.computeWidth() + PADDING_OFFSET, Unit.PIXELS);
+//        gridLayout.setWidth(stack.computeWidth() + PADDING_OFFSET, Unit.PIXELS);
+//        gridLayout.setSpacing(false);
+//        gridLayout.setMargin(false);
         
         for (ApplicationLayer eachLayer : stack.getLayers()) {
             final Coordinates c = eachLayer.getCoordinates();

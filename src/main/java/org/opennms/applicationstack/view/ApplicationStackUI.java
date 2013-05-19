@@ -2,12 +2,8 @@ package org.opennms.applicationstack.view;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.opennms.applicationstack.model.ApplicationLayer;
 import org.opennms.applicationstack.model.ApplicationStack;
 import org.opennms.applicationstack.model.NodeDummy;
@@ -20,12 +16,12 @@ import org.opennms.applicationstack.model.NodeDummy;
 public class ApplicationStackUI extends UI {
 
     @Override
-    protected void init(VaadinRequest request) {
+    protected void init(VaadinRequest request) {        
         final VerticalLayout layout = new VerticalLayout();
         layout.setSizeFull();
-        layout.setMargin(true);
         setContent(layout);
-        
+        setSizeFull();
+      
         final ApplicationStack stack = new ApplicationStack("Waschmaschine")
                 .addLayer(new ApplicationLayer("Layer1", 0, 0, 4, 1))
                 .addLayer(new ApplicationLayer("Layer2a", 1, 0, 2, 1))

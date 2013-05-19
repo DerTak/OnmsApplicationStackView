@@ -2,13 +2,8 @@
 
 .v-customcomponent .applicationStack {
     background: peachpuff;
-    margin: 0px;
-    padding: 10px 10px 10px 10px;;
-}
-
-.v-gridlayout-applicationStack {
     margin: 0;
-    padding: 0;
+    padding: 20px 15px 20px 15px;
 }
 
 .v-captiontext {
@@ -17,19 +12,15 @@
 
 .applicationLayer {
     background: peachpuff;
-    margin: 0px;
-    padding: 10px 10px 0px 10px;
-
-
+    margin: 0;
+    padding: 0;
+    padding: 10px 5px 0px 5px; 
 }
 
 .v-panel-content-applicationLayer {
-    padding: 5px;
-    margin: 0px;
+    padding:  5px;
 }
-.v-label {
-    font-weight: bold;
-}
+
 
 .v-label-good {
     background: green;

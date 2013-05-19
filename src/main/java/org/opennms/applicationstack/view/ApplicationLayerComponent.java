@@ -30,6 +30,8 @@ public class ApplicationLayerComponent extends CustomComponent {
         content.addComponent(label);
         content.addComponent(healthIndicator);
         content.setComponentAlignment(content.getComponent(1), Alignment.BOTTOM_LEFT);
+        content.setSpacing(false);
+        content.setMargin(false);
         
         setCompositionRoot(p);
         p.setContent(content);
