@@ -1,4 +1,4 @@
-package org.opennms.applicationstack.view;
+package org.opennms.vaadin.applicationstack.view;
 
 /**
  *
