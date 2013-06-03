@@ -10,7 +10,6 @@ import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.AbstractSelect.NewItemHandler;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -21,6 +20,9 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("serial")
 @Theme("applicationstack")
 public class ApplicationStackUI extends UI {
+    static {
+        System.setProperty("onms.home", "/home/marskuh");
+    }
     private NodeListProvider nodeListProvider;
     private ComboBox stacksComboBox;
     private ApplicationStackComponent stackComponent;
@@ -42,6 +44,15 @@ public class ApplicationStackUI extends UI {
         stacksComboBox.setImmediate(true);
         stacksComboBox.setDescription("Select a Stack to show. You can also type in a non existing stack name. That stack is then created");
         stacksComboBox.setInputPrompt("Select a stack");
+        
+        layout.addComponent(stacksComboBox);
+       	layout.addComponent(stackComponent);
+       	layout.setExpandRatio(stackComponent, 1);
+        
+        render(stacksProvider.loadApplicationStacks().getFirst());
+    }
+    
+    public void render(ApplicationStack stack) {
         stacksComboBox.setContainerDataSource(
         		new BeanItemContainer<ApplicationStack>(
         				ApplicationStack.class, 
@@ -68,14 +79,9 @@ public class ApplicationStackUI extends UI {
 				}
 			}
 		});
-        
-       	layout.addComponent(stacksComboBox);
-       	layout.addComponent(stackComponent);
-       	layout.setExpandRatio(stackComponent, 1);
-       	
-       	stacksComboBox.select(stacksProvider.loadApplicationStacks().getFirst());
+       	stacksComboBox.select(stack);
     }
-
+     
     public void setNodeListProvider(NodeListProvider nodeListProvider) {
         this.nodeListProvider = nodeListProvider;
     }

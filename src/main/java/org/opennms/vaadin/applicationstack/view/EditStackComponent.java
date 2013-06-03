@@ -1,4 +1,4 @@
-package snippet;
+package org.opennms.vaadin.applicationstack.view;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickListener;
