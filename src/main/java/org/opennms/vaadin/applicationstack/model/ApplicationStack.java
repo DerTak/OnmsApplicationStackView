@@ -37,6 +37,7 @@ public class ApplicationStack {
 
     public ApplicationStack removeLayer(ApplicationLayer layer) {
         layers.remove(layer);
+        fixRowCount(layer.getRow());
         return this;
     }
 
@@ -95,5 +96,27 @@ public class ApplicationStack {
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
+    }
+    
+    /**
+     * Decreases the row for each application layer which has a row 
+     * greater than removedRow. The row is only decreased if there is no other
+     * layer in the removed row.
+     * @param removedRow The index of the row which was removed
+     */
+    private void fixRowCount(int removedRow) {
+        if (countLayersForRow(removedRow) >= 1) return; // no fix needed
+        for (ApplicationLayer eachLayer : layers) {
+            if (eachLayer.getRow() > removedRow) 
+                eachLayer.setRow(eachLayer.getRow() - 1);
+        }
+    }
+        
+    private int countLayersForRow(int row) {
+        int count = 0;
+         for (ApplicationLayer eachLayer : layers) {
+            if (eachLayer.getRow() == row) count++;
+        }
+         return count;
     }
 }
