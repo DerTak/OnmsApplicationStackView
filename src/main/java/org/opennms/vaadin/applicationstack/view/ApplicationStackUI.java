@@ -2,6 +2,7 @@ package org.opennms.vaadin.applicationstack.view;
 
 import org.opennms.vaadin.applicationstack.model.ApplicationStack;
 import org.opennms.vaadin.applicationstack.provider.ApplicationStacksProvider;
+import org.opennms.vaadin.applicationstack.provider.ApplicationStacksProviderFactory;
 import org.opennms.vaadin.applicationstack.provider.NodeListProvider;
 
 import com.vaadin.annotations.Theme;
@@ -24,7 +25,7 @@ public class ApplicationStackUI extends UI implements ApplicationStackChangedLis
     private ComboBox stacksComboBox;
     private ApplicationStackComponent stackComponent;
     private EditStackComponent editComponent;
-    private ApplicationStacksProvider stacksProvider = new ApplicationStacksProvider("/home/marskuh/Desktop/application-stacks.xml");
+    private ApplicationStacksProvider stacksProvider = ApplicationStacksProviderFactory.instance.getApplicationStacksProvider();
 
     @Override
     protected void init(VaadinRequest request) {
